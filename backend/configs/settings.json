@@ -1,0 +1,6 @@
+{
+  "httplisten": ":8888",
+  "logfile": "output.log",
+  "loglevel": "debug",
+  "connectionstring": "root:CjrXBHgPJQ97bmzEsVCw9rLmfbuLgsHs4x@tcp(127.0.0.1:13306)/social_network"
+}
