@@ -34,8 +34,8 @@ func (s ProfileServiceImplementation) UpdateProfile(ctx context.Context, id uint
 	return err
 }
 
-
 const getFriendsQuery = "SELECT p.Id, p.Email, p.FirstName, p.LastName, p.Age, p.Gender, p.City, p.Hobby FROM Relationship r INNER JOIN Profile p ON p.Id = r.TargetId WHERE r.SourceId = ?"
+
 func (s ProfileServiceImplementation) GetFriendsList(ctx context.Context, id uint64) ([]Profile, error) {
 	row, err := s.db.QueryxContext(ctx, getFriendsQuery, id)
 	if err != nil {
@@ -56,12 +56,14 @@ func (s ProfileServiceImplementation) GetFriendsList(ctx context.Context, id uin
 }
 
 const insertRelationQuery = "INSERT INTO Relationship (Id, SourceId, TargetId) VALUES (UUID(), ? ,? )"
+
 func (s ProfileServiceImplementation) MakeFriendship(ctx context.Context, sourceProfileId uint64, targetProfileId uint64) error {
 	_, err := s.db.ExecContext(ctx, insertRelationQuery, sourceProfileId, targetProfileId)
 	return err
 }
 
 const deleteRelationQuery = "DELETE FROM Relationship WHERE SourceId = ? AND TargetId = ?"
+
 func (s ProfileServiceImplementation) CancelFriendship(ctx context.Context, sourceProfileId uint64, targetProfileId uint64) error {
 	_, err := s.db.ExecContext(ctx, deleteRelationQuery, sourceProfileId, targetProfileId)
 	return err

@@ -1,4 +1,4 @@
-module backend
+module github.com/mvanyushkin/otus-social-network
 
 go 1.13
 

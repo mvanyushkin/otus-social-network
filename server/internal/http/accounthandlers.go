@@ -1,8 +1,8 @@
 package http
 
 import (
-	"backend/internal/domain"
 	"github.com/gin-gonic/gin"
+	"github.com/mvanyushkin/otus-social-network/internal/domain"
 	"net/http"
 )
 
@@ -17,13 +17,13 @@ func registerNewHandler(profileService domain.AccountService) func(c *gin.Contex
 		}
 
 		profile := domain.Profile{
-			Email:        profileDto.Email,
-			FirstName:    profileDto.FirstName,
-			LastName:     profileDto.LastName,
-			Age:          profileDto.Age,
-			Gender:       profileDto.Gender,
-			City:         profileDto.City,
-			Hobby:        profileDto.Hobby,
+			Email:     profileDto.Email,
+			FirstName: profileDto.FirstName,
+			LastName:  profileDto.LastName,
+			Age:       profileDto.Age,
+			Gender:    profileDto.Gender,
+			City:      profileDto.City,
+			Hobby:     profileDto.Hobby,
 		}
 
 		id, err := profileService.RegisterNew(c, profile, profileDto.PasswordHash)
@@ -38,7 +38,6 @@ func registerNewHandler(profileService domain.AccountService) func(c *gin.Contex
 		}
 	}
 }
-
 
 func loginHandler(service domain.AccountService) func(c *gin.Context) {
 	return func(c *gin.Context) {
@@ -60,7 +59,6 @@ func loginHandler(service domain.AccountService) func(c *gin.Context) {
 		}
 	}
 }
-
 
 func logoutHandler(service domain.AccountService) func(c *gin.Context) {
 	return func(c *gin.Context) {
@@ -84,6 +82,6 @@ func logoutHandler(service domain.AccountService) func(c *gin.Context) {
 }
 
 type LoginDto struct {
-	Email        string `json:"email"`
+	Email    string `json:"email"`
 	Password string `json:"passwordhash"`
 }

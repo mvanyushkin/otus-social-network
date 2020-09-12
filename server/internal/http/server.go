@@ -1,8 +1,8 @@
 package http
 
 import (
-	"backend/internal/domain"
 	"github.com/gin-gonic/gin"
+	"github.com/mvanyushkin/otus-social-network/internal/domain"
 	"net/http"
 )
 

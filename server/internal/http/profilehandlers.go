@@ -1,8 +1,8 @@
 package http
 
 import (
-	"backend/internal/domain"
 	"github.com/gin-gonic/gin"
+	"github.com/mvanyushkin/otus-social-network/internal/domain"
 	"net/http"
 	"strconv"
 )
@@ -50,13 +50,13 @@ func updateProfile(profileService domain.ProfileService) func(c *gin.Context) {
 		}
 
 		profile := domain.Profile{
-			Email:        profileDto.Email,
-			FirstName:    profileDto.FirstName,
-			LastName:     profileDto.LastName,
-			Age:          profileDto.Age,
-			Gender:       profileDto.Gender,
-			City:         profileDto.City,
-			Hobby:        profileDto.Hobby,
+			Email:     profileDto.Email,
+			FirstName: profileDto.FirstName,
+			LastName:  profileDto.LastName,
+			Age:       profileDto.Age,
+			Gender:    profileDto.Gender,
+			City:      profileDto.City,
+			Hobby:     profileDto.Hobby,
 		}
 
 		err = profileService.UpdateProfile(c, profileId, profile)

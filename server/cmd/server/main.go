@@ -1,13 +1,13 @@
 package main
 
 import (
-	"backend/internal/config"
-	"backend/internal/domain"
-	"backend/internal/http"
-	"backend/logger"
 	"flag"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
+	"github.com/mvanyushkin/otus-social-network/internal/config"
+	"github.com/mvanyushkin/otus-social-network/internal/domain"
+	"github.com/mvanyushkin/otus-social-network/internal/http"
+	"github.com/mvanyushkin/otus-social-network/logger"
 	log "github.com/sirupsen/logrus"
 )
 
